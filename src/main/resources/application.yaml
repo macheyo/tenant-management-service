@@ -72,3 +72,6 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: https://kaguvi-service-registry.herokuapp.com/eureka/
+server:
+  servlet:
+    context-path: /tenant

@@ -40,7 +40,6 @@ public class TenantController {
 
     @PostMapping("/create")
     public EntityModel<Tenant> create(@RequestBody Tenant tenant){
-
         tenantRepository.save(tenant);
         return tenantModelAssembler.toModel(tenant);
     }
