@@ -1,3 +1,5 @@
+server:
+  port: 8001
 spring:
   config:
     activate:
@@ -26,10 +28,7 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-server:
-  port: 8001
-  servlet:
-    context-path: /tenant
+
 ---
 spring:
   config:
@@ -72,6 +71,3 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: https://kaguvi-service-registry.herokuapp.com/eureka/
-server:
-  servlet:
-    context-path: /tenant

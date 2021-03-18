@@ -17,6 +17,7 @@ import zw.co.macheyo.tenantmanagementservice.repository.TenantRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//TO-DO add context path
 @RestController
 @CrossOrigin
 public class TenantController {
@@ -32,19 +33,19 @@ public class TenantController {
         return CollectionModel.of(tenants, linkTo(methodOn(TenantController.class).all()).withSelfRel());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/tenant/{id}")
     public EntityModel<Tenant> one(@PathVariable Long id) {
         Tenant tenant = tenantRepository.findById(id).orElseThrow(() -> new TenantNotFoundException(id));
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/tenant/create")
     public EntityModel<Tenant> create(@RequestBody Tenant tenant){
         tenantRepository.save(tenant);
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/tenant/{id}")
     public Tenant update(@RequestBody Tenant tenant, @PathVariable Long id) {
         return tenantRepository.findById(id)
                 .map(newTenant -> {
@@ -59,13 +60,13 @@ public class TenantController {
     }
 
 
-    @GetMapping("/activate/{id}")
+    @GetMapping("/tenant/activate/{id}")
     public EntityModel<Tenant> activate(@PathVariable Long id){
         Tenant tenant = new Tenant();
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @GetMapping("/deactivate/{id}")
+    @GetMapping("/tenant/deactivate/{id}")
     public EntityModel<Tenant> deactivate(@PathVariable Long id){
         Tenant tenant = new Tenant();
         return tenantModelAssembler.toModel(tenant);
