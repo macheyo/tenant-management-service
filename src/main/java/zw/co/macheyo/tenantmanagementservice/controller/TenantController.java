@@ -33,19 +33,19 @@ public class TenantController {
         return CollectionModel.of(tenants, linkTo(methodOn(TenantController.class).all()).withSelfRel());
     }
 
-    @GetMapping("/tenant/{id}")
+    @GetMapping("/{id}")
     public EntityModel<Tenant> one(@PathVariable Long id) {
         Tenant tenant = tenantRepository.findById(id).orElseThrow(() -> new TenantNotFoundException(id));
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @PostMapping("/tenant/create")
+    @PostMapping("/create")
     public EntityModel<Tenant> create(@RequestBody Tenant tenant){
         tenantRepository.save(tenant);
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @PutMapping("/tenant/{id}")
+    @PutMapping("/{id}")
     public Tenant update(@RequestBody Tenant tenant, @PathVariable Long id) {
         return tenantRepository.findById(id)
                 .map(newTenant -> {
@@ -60,13 +60,13 @@ public class TenantController {
     }
 
 
-    @GetMapping("/tenant/activate/{id}")
+    @GetMapping("/activate/{id}")
     public EntityModel<Tenant> activate(@PathVariable Long id){
         Tenant tenant = new Tenant();
         return tenantModelAssembler.toModel(tenant);
     }
 
-    @GetMapping("/tenant/deactivate/{id}")
+    @GetMapping("/deactivate/{id}")
     public EntityModel<Tenant> deactivate(@PathVariable Long id){
         Tenant tenant = new Tenant();
         return tenantModelAssembler.toModel(tenant);

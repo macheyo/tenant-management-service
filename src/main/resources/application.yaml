@@ -1,5 +1,7 @@
 server:
   port: 8001
+  servlet:
+    context-path: /tenant
 spring:
   config:
     activate:
@@ -30,6 +32,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 ---
+server:
+  servlet:
+    context-path: /tenant
 spring:
   config:
     activate:
