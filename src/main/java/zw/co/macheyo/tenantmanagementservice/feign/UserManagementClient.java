@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import zw.co.macheyo.tenantmanagementservice.entity.UserDTO;
 
-@FeignClient(name="USER-MANAGEMENT-SERVICE")
+@FeignClient(name="USER-MANAGEMENT-SERVICE", url = "https://kaguvi-user-management-service.herokuapp.com/")
 public interface UserManagementClient {
     @RequestMapping(method= RequestMethod.GET, value="/user/me")
     public UserDTO getUser(@RequestHeader("Authorization") String token);
